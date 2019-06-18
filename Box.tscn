@@ -1,0 +1,8 @@
+[gd_scene format=2]
+
+[node name="Box" type="Spatial"]
+
+[node name="CSGBox" type="CSGBox" parent="."]
+width = 1.0
+height = 1.0
+depth = 1.0

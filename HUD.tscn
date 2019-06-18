@@ -1,0 +1,192 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://HUD.gd" type="Script" id=1]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://fonts/OpenSans-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 22
+font_data = SubResource( 1 )
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="Controls" type="RichTextLabel" parent="."]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -362.0
+margin_top = 15.0
+margin_right = -16.0
+margin_bottom = 126.0
+text = "ESC = Toggle HUD
+Right Click = Place / Remove Block (with HUD open)
+W,A,S,D = Movement
+E, Q = Up / Down (relative to camera rotation)
+
+Green Boxes = Newborn
+Blue Boxes = Survivors"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -380.0
+margin_top = -61.0
+margin_right = 380.0
+margin_bottom = -21.0
+custom_constants/separation = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+editor/display_folded = true
+margin_right = 100.0
+margin_bottom = 41.0
+rect_min_size = Vector2( 100, 0 )
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="tickLabel" type="Label" parent="HBoxContainer/VBoxContainer"]
+margin_right = 100.0
+margin_bottom = 14.0
+text = "Tick"
+
+[node name="speedSlider" type="HSlider" parent="HBoxContainer/VBoxContainer"]
+margin_top = 18.0
+margin_right = 100.0
+margin_bottom = 34.0
+min_value = 0.05
+max_value = 4.0
+step = 0.1
+value = 1.0
+exp_edit = true
+
+[node name="VSeparator2" type="VSeparator" parent="HBoxContainer"]
+margin_left = 110.0
+margin_right = 120.0
+margin_bottom = 41.0
+custom_constants/separation = 10
+
+[node name="StartButton" type="Button" parent="HBoxContainer"]
+margin_left = 130.0
+margin_right = 171.0
+margin_bottom = 41.0
+text = "Start"
+
+[node name="ClearButton" type="Button" parent="HBoxContainer"]
+margin_left = 181.0
+margin_right = 229.0
+margin_bottom = 41.0
+text = "Reset"
+
+[node name="VSeparator3" type="VSeparator" parent="HBoxContainer"]
+margin_left = 239.0
+margin_right = 249.0
+margin_bottom = 41.0
+size_flags_horizontal = 3
+custom_constants/separation = 10
+
+[node name="OptionButton" type="OptionButton" parent="HBoxContainer"]
+margin_left = 259.0
+margin_right = 348.0
+margin_bottom = 41.0
+text = "Presets"
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+margin_left = 358.0
+margin_right = 368.0
+margin_bottom = 41.0
+size_flags_horizontal = 3
+custom_constants/separation = 10
+
+[node name="2DModeCheckbox" type="CheckBox" parent="HBoxContainer"]
+margin_left = 378.0
+margin_right = 402.0
+margin_bottom = 41.0
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+margin_left = 412.0
+margin_top = 13.0
+margin_right = 470.0
+margin_bottom = 27.0
+text = "2D Mode"
+
+[node name="VSeparator4" type="VSeparator" parent="HBoxContainer"]
+margin_left = 480.0
+margin_right = 490.0
+margin_bottom = 41.0
+size_flags_horizontal = 3
+custom_constants/separation = 10
+
+[node name="presetSaveName" type="LineEdit" parent="HBoxContainer"]
+margin_left = 500.0
+margin_right = 650.0
+margin_bottom = 41.0
+rect_min_size = Vector2( 150, 0 )
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+custom_fonts/font = SubResource( 2 )
+
+[node name="presetSaveButton" type="Button" parent="HBoxContainer"]
+margin_left = 660.0
+margin_right = 764.0
+margin_bottom = 41.0
+text = "Save as Preset"
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -116.119
+margin_top = -23.9302
+margin_right = -45.1187
+margin_bottom = -9.93018
+text = "Generation"
+
+[node name="GenerationLabel" type="Label" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -152.0
+margin_top = -43.0
+margin_right = -9.0
+margin_bottom = -29.0
+text = "0."
+align = 1
+
+[node name="AcceptDialog" type="AcceptDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -167.5
+margin_top = -44.0
+margin_right = 167.5
+margin_bottom = 44.0
+popup_exclusive = true
+window_title = "Notice"
+
+[node name="Sidebar" type="VBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -225.0
+margin_top = -20.0
+margin_right = -23.0
+margin_bottom = 20.0
+custom_constants/separation = 13
+
+[node name="CameraTopButton" type="Button" parent="Sidebar"]
+margin_right = 202.0
+margin_bottom = 20.0
+text = "Camera: Top"
+[connection signal="value_changed" from="HBoxContainer/VBoxContainer/speedSlider" to="." method="_on_speedSlider_value_changed"]
+[connection signal="pressed" from="HBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="HBoxContainer/ClearButton" to="." method="_on_ClearButton_pressed"]
+[connection signal="item_selected" from="HBoxContainer/OptionButton" to="." method="_on_OptionButton_item_selected"]
+[connection signal="toggled" from="HBoxContainer/2DModeCheckbox" to="." method="_on_2DModeCheckbox_toggled"]
+[connection signal="pressed" from="HBoxContainer/presetSaveButton" to="." method="_on_presetSaveButton_pressed"]
+[connection signal="pressed" from="Sidebar/CameraTopButton" to="." method="_on_CameraTopButton_pressed"]
