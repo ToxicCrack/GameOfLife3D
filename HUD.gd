@@ -3,18 +3,18 @@ extends CanvasLayer
 var presets = [
   {"name": "Presets"},
   {"name": "separator"},
-  {"name": "Glider", "pattern": [[false, true, false], [false, false, true], [true, true, true]]},
-  {"name": "Light Spaceship", "pattern": [[false, true, true, true, true], [true, false, false, false, true], [false, false, false, false, true], [true, false, false, true, false]]},
+  {"name": "Glider", "pattern": [[0, 1, 0], [0, 0, 1], [1, 1, 1]]},
+  {"name": "Light Spaceship", "pattern": [[0, 1, 1, 1, 1], [1, 0, 0, 0, 1], [0, 0, 0, 0, 1], [1, 0, 0, 1, 0]]},
   {"name": "separator"},
-  {"name": "Small Exploder", "pattern": [[false, true, false], [true, true, true], [true, false, true], [false, true, false]]},
-  {"name": "Exploder", "pattern": [[true, false, true, false, true], [true, false, false, false, true], [true, false, false, false, true], [true, false, false, false, true], [true, false, true, false, true]]},
-  {"name": "10 Cell Row", "pattern": [[true, true, true, true, true, true, true, true, true, true]]},
-  {"name": "Tumbler", "pattern": [[false, true, true, false, true, true, false], [false, true, true, false, true, true, false], [false, false, true, false, true, false, false], [true, false, true, false, true, false, true], [true, false, true, false, true, false, true], [true, true, false, false, false, true, true]]},
+  {"name": "Small Exploder", "pattern": [[0, 1, 0], [1, 1, 1], [1, 0, 1], [0, 1, 0]]},
+  {"name": "Exploder", "pattern": [[1, 0, 1, 0, 1], [1, 0, 0, 0, 1], [1, 0, 0, 0, 1], [1, 0, 0, 0, 1], [1, 0, 1, 0, 1]]},
+  {"name": "10 Cell Row", "pattern": [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1]]},
+  {"name": "Tumbler", "pattern": [[0, 1, 1, 0, 1, 1, 0], [0, 1, 1, 0, 1, 1, 0], [0, 0, 1, 0, 1, 0, 0], [1, 0, 1, 0, 1, 0, 1], [1, 0, 1, 0, 1, 0, 1], [1, 1, 0, 0, 0, 1, 1]]},
   {"name": "separator"},
-  {"name": "Acorn", "pattern": [[false, true], [false, false, false, true], [true, true, false, false, true, true, true]]},
-  {"name": "B-Heptomino", "pattern": [[true, false, true, true], [true, true, true], [false, true, false]]},
-  {"name": "Extinction", "pattern": [[true, true, true], [true, false, true], [true, false, true], [false, false, false], [true, false, true], [true, false, true], [true, true, true]]},
-  {"name": "r-Pentomino", "pattern": [[false, true, true], [true, true, false], [false, true, false]]},
+  {"name": "Acorn", "pattern": [[0, 1], [0, 0, 0, 1], [1, 1, 0, 0, 1, 1, 1]]},
+  {"name": "B-Heptomino", "pattern": [[1, 0, 1, 1], [1, 1, 1], [0, 1, 0]]},
+  {"name": "Extinction", "pattern": [[1, 1, 1], [1, 0, 1], [1, 0, 1], [0, 0, 0], [1, 0, 1], [1, 0, 1], [1, 1, 1]]},
+  {"name": "r-Pentomino", "pattern": [[0, 1, 1], [1, 1, 0], [0, 1, 0]]},
   {"name": "separator"},
 ]
 
@@ -87,6 +87,8 @@ func _input(event):
     
 func _on_ClearButton_pressed():
   GameManager.clear()
+  GameManager.stop()
+  $HBoxContainer/StartButton.text = "start"
 
 func _on_OptionButton_item_selected(ID):
   var preset = self.presets[ID]

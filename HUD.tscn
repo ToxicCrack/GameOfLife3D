@@ -24,8 +24,8 @@ Right Click = Place / Remove Block (with HUD open)
 W,A,S,D = Movement
 E, Q = Up / Down (relative to camera rotation)
 
-Green Boxes = Newborn
-Blue Boxes = Survivors"
+Green Cells = Newborn
+Blue Cells = Survivors"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchor_left = 0.5
