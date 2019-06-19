@@ -112,7 +112,6 @@ func _on_presetSaveButton_pressed():
     return
   
   self.save_as_preset($HBoxContainer/presetSaveName.text)
-  $AcceptDialog.dialog_text = ""
   
 func save_as_preset(preset_name):
   var max_x = 0
